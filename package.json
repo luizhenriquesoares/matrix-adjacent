@@ -1,0 +1,10 @@
+{
+  "name": "matrix-adjacent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "luizhenriquesoares",
+  "license": "MIT",
+  "dependencies": {
+    "numjs": "^0.15.1"
+  }
+}
