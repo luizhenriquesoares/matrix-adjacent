@@ -10,6 +10,7 @@ const np = require('numjs')
  * @param {*} directed 
  */
 const Graph = (numVertices, directed = false) => {
+
   this.numVertices = numVertices
   this.directed = directed
 
@@ -32,7 +33,8 @@ const Graph = (numVertices, directed = false) => {
  * @param {*} Graph 
  */
 const AdjacentMatrixGraph = (Graph) => {
-  this.matrix = np.zeros(this.numVertices, this.numVertices)
+  const numVertices = Graph
+  this.matrix = np.zeros(numVertices, numVertices)
 
   this.addEdge = (v1, v2, weight = 1) => {
     if (v1 >= this.numVertices || v2 >= this.numVertices || v1 < 0 || v2 < 0)
@@ -47,7 +49,46 @@ const AdjacentMatrixGraph = (Graph) => {
     }
   }
 
-  this.addEdge()
+  this.GetAdjacentVertices = (v) => {
+    if (V < 0 || v >= this.numVertices)
+      return throws(`Não pode acessar o node ${v}`)
+
+    const adjacentVertices = []
+
+    this.numVertices.map((numVertice, i) => {
+      if (this.matrix[v][i] > 0) {
+        adjacentVertices.push(i)
+      }
+
+      return adjacentVertices
+    })
+
+    this.display = () => {
+      this.numVertices.map((res, i) => {
+        this.getAdjacentVertices[i].map((vertice, j) => {
+          console.log(`${i} ----> ${v}`)
+        })
+      })
+    }
+  }
 }
 
-AdjacentMatrixGraph(Graph())
+const g = AdjacentMatrixGraph(Graph())
+console.log(g)
+// Add Arestas
+// g.addEdge(0, 1)
+// g.addEdge(0, 2)
+
+// console.log('Matrix de Adjacência')
+// console.log(g.matrix)
+
+// console.log('========================================')
+// console.log('Visualizando conexões (Arestas): ')
+// for (let i = 0; i < 3; i++) {
+//   console.log(`Node ${i} conectado a ${g.getAdjacentVertices[i]}`)
+// }
+
+// console.log('=============================================')
+
+// console.log('Visualizando grafo:')
+// g.display()
